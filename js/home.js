@@ -13,10 +13,33 @@ document.getElementById('btn-add-money').addEventListener('click',function(event
     event.preventDefault();
 
     //step-02: get money to be added to the account
-    const amountNumber = document.getElementById('input-amount').value;
-    console.log(amountNumber);
+    const addMoneyInput = document.getElementById('input-amount').value;
+    console.log(addMoneyInput);
 
     //get the pin number provided
-    const pinNumber = document.getElementById('input-pin').value;
-    console.log(pinNumber)
+    const pinNumberInput = document.getElementById('input-pin').value;
+    console.log(pinNumberInput);
+
+    //varify pin number
+    //wrong way to validate pin number
+    if(pinNumberInput === '1234'){
+        console.log('adding money to your account');
+
+        //step-04: get the current balance
+        const balance = document.getElementById('account-balance').innerText;
+        console.log(typeof balance);
+
+        //atep-05: addMoneyInput with balance
+        const addMoneyNumber = parseFloat(addMoneyInput);
+        const balanceNumber = parseFloat(balance);
+        const newBalance = addMoneyNumber + balanceNumber;
+        console.log(newBalance);
+
+        //step-06: update the balance in the UI/DOM
+        document.getElementById('account-balance').innerText = newBalance;
+    }
+    else{
+        console.log('Failed to add money! Please try again.');
+        alert('Failed to add money! Please try again.')
+    }
 })
